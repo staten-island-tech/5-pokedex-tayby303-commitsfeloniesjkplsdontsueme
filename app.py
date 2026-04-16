@@ -21,10 +21,11 @@ else:
     for pokemon in data:
         print(pokemon["name"]['english'])
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
-languages=["firejapanese","chinese","french"]
-for language in (languages):
-    print(language)
-lang=input("Please enter the index of the language you wish to select: ").lower()
+types=["grass","fire","water","lightning",'grass','ice','poison','dark',"ground",'rock','steel','psychic','normal','flying','dragon','fairy']
+print('Types:')
+for type in (types):
+    print(type)
+lang =input("Please enter the index of the language you wish to select: ").lower()
 #Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found. 
 
 #For Leo/, help me come up with a clever final question, considering maybe showing all moves a pokemon has avaiable based on type
