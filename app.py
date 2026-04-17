@@ -6,26 +6,32 @@ data=json.load(pokedex)
 languages=["english","japanese","chinese","french"]
 for language in (languages):
     print(language)
-lang=input("Please enter the index of the language you wish to select: ").lower()
+lang=input("Please enter the language you wish to select: ").lower()
 # Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
-if lang == "japanese":
-    for pokemon in data:
-        print(pokemon["name"]["japanese"])
-elif lang == "french":
-    for pokemon in data:
-        print(pokemon["name"]["french"])
-elif lang == "chinese":
-    for pokemon in data:
-        print(pokemon["name"]["chinese"])
-else:
-    for pokemon in data:
-        print(pokemon["name"]['english'])
+for pokemon in data:
+    print(pokemon['name'][lang])
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
-types=["grass","fire","water","lightning",'grass','ice','poison','dark',"ground",'rock','steel','psychic','normal','flying','dragon','fairy']
-print('Types:')
-for type in (types):
-    print(type)
-lang =input("Please enter the index of the language you wish to select: ").lower()
+def typeSearch():
+    type1=input("What pokemon type are you searching for? ").capitalize()
+    t2=input("Is there a secondary typing? yes/no ").lower()
+    if t2=='yes':
+        type2=input("What pokemon type are you searching for? ").capitalize()
+        for pokemon in data:
+            if type1 in pokemon["type"] and type2 in pokemon["type"]:
+                print(pokemon["name"][lang])
+    elif t2!='yes':
+        for pokemon in data:
+            if type1 in pokemon["type"]:
+                print(pokemon["name"][lang])
+#typeSearch()
 #Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found. 
-
+def poke_search():
+    continue_search = input("Would you like to search for a pokemon?: ")
+    y = continue_search.capitalize()
+    while y == "Yes":
+        user_search = input(" Search for a Pokemon here: ")
+        for poke_names in data:
+            if user_search in poke_names["name"]["english"]:
+                print(poke_names["name"]["english"])
+poke_search()
 #For Leo/, help me come up with a clever final question, considering maybe showing all moves a pokemon has avaiable based on type
