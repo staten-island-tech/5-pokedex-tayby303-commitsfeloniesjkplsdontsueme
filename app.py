@@ -24,14 +24,13 @@ def typeSearch():
             if type1 in pokemon["type"]:
                 print(pokemon["name"][lang])
 #typeSearch()
-#Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found. 
-def poke_search():
-    continue_search = input("Would you like to search for a pokemon?: ")
-    y = continue_search.capitalize()
-    while y == "Yes":
+#Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found.
+def nameSearch():
+    mon = input("Would you like to search for a pokemon?: ").capitalize()
+    while mon == "Yes":
         user_search = input(" Search for a Pokemon here: ")
         for poke_names in data:
-            if user_search in poke_names["name"]["english"]:
-                print(poke_names["name"]["english"])
-poke_search()
+            if user_search in poke_names["name"][lang]:
+                print(poke_names["name"][lang])
+nameSearch()
 #For Leo/, help me come up with a clever final question, considering maybe showing all moves a pokemon has avaiable based on type
