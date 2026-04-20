@@ -8,8 +8,12 @@ for language in (languages):
     print(language)
 lang=input("Please enter the language you wish to select: ").lower()
 # Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
-for pokemon in data:
-    print(pokemon['name'][lang])
+if lang in languages;
+    for pokemon in data:
+        print(pokemon['name'][lang])
+else:
+    for pokemon in data:
+        print(pokemon['name'['english'])
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
 def typeSearch():
     type1=input("What pokemon type are you searching for? ").capitalize()
