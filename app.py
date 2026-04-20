@@ -8,7 +8,7 @@ for language in (languages):
     print(language)
 lang=input("Please enter the language you wish to select: ").lower()
 # Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
-if lang in languages;
+if lang in languages:
     for pokemon in data:
         print(pokemon['name'][lang])
 else:
@@ -27,7 +27,7 @@ def typeSearch():
         for pokemon in data:
             if type1 in pokemon["type"]:
                 print(pokemon["name"][lang])
-#typeSearch()
+typeSearch()
 #Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found.
 def nameSearch():
     mon = input("Would you like to search for a pokemon?: ").capitalize()
