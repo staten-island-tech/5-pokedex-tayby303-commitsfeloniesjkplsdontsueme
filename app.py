@@ -13,7 +13,7 @@ if lang in languages:
         print(pokemon['name'][lang])
 else:
     for pokemon in data:
-        print(pokemon['name'['english'])
+        print(pokemon['name']['english'])
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
 def typeSearch():
     type1=input("What pokemon type are you searching for? ").capitalize()
