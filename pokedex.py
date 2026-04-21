@@ -1,52 +1,50 @@
-import json
-## Open the JSON file of pokemon data
+import json     # Open the JSON file of pokemon data
 pokedex = open("./pokedex.json", encoding="utf8")
-## create variable "data" that represents the enitre pokedex list
-data = json.load(pokedex)
-
-# Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
+# create variable "data" that represents the entire pokedex list
+data=json.load(pokedex)
 # Add a language choice feature and print the pokemons name based on the user input
-lan_choice = ("")
-x = ("")
-def print_pokemon_names(data):
-    lan_choice = input("What laguage do you want: Japanese, English, French, or Chinese? ")
-    x = lan_choice.capitalize()
-    if x == "Japanese":
-        for pokemon in data:
-            print(pokemon["name"]["japanese"])
-    elif x == "English":
-        for pokemon in data:
-            print(pokemon["name"]["english"])
-    elif x == "French":
-        for pokemon in data:
-            print(pokemon["name"]["french"])
-    elif x == "Chinese":
-        for pokemon in data:
-            print(pokemon["name"]["chinese"])
-print_pokemon_names(data)
-
-# Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
-
-def type_list():
-    type_choice = input("What pokemon type are you searching for? ")
-    x = type_choice.capitalize()
-    found = False
+languages=["english","japanese","chinese","french"]
+for language in (languages):
+    print(language)
+lang=input("Please enter the language you wish to select: ").lower()
+# Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
+if lang in languages:
     for pokemon in data:
-        if x in pokemon["type"]:
-            found = True
-            print(pokemon["name"]["english"])
-    if found  == False:    
-        print("No pokemon of that type was found.")
-type_list()
-#Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found. 
-
-def poke_search():
-    continue_search = input("Would you like to search for a pokemon?: ")
-    y = continue_search.capitalize()
-    while y == "Yes":
-        user_search = input(" Search for a Pokemon here: ")
+        print(pokemon['name'][lang])
+else:
+    for pokemon in data:
+        print(pokemon['name']['english'])
+# Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
+def typeSearch():
+    typ=input('Would you like to search for a pokemon via type? ').lower()
+    if typ == "yes":
+        type1=input("What pokemon type are you searching for? ").capitalize()
+        t2=input("Is there a secondary typing? yes/no ").lower()
+        if t2=='yes':
+            type2=input("What pokemon type are you searching for? ").capitalize()
+            for pokemon in data:
+                if type1 in pokemon["type"] and type2 in pokemon["type"]:
+                    print(pokemon["name"][lang])
+        elif t2!='yes':
+            for pokemon in data:
+                if type1 in pokemon["type"]:
+                    print(pokemon["name"][lang])
+    else:
+        return()
+typeSearch()
+#Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found.
+def nameSearch():
+    mon = input("Would you like to search for a pokemon? ").lower()
+    if mon == "yes":
+        user_search = input("Search for a Pokemon here: ").capitalize()
         for poke_names in data:
-            if user_search in poke_names["name"]["english"]:
-                print(poke_names["name"]["english"])
-poke_search()
+            if user_search in poke_names["name"][lang]:
+                print(poke_names["name"][lang])
+            elif user_search not in poke_names['name'][lang]:
+                print("No pokemon was found.")
+    else:
+        return()
+nameSearch()
 #For Leo/, help me come up with a clever final question, considering maybe showing all moves a pokemon has avaiable based on type
+moves = open("./moves.json", encoding="utf8")
+info=json.load(moves)
