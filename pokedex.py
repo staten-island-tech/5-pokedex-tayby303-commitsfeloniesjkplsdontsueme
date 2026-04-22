@@ -23,7 +23,7 @@ def typeSearch():
         type1=input("What pokemon type are you searching for? ").capitalize()
         t2=input("Is there a secondary typing? yes/no ").lower()
         if t2=='yes':
-            type2=input("What pokemon type are you searching for? ").capitalize()
+            type2=input("What secondary pokemon type are you searching for? ").capitalize()
             for pokemon in data:
                 if type1 in pokemon["type"] and type2 in pokemon["type"]:
                     print(pokemon["name"][lang])
@@ -51,7 +51,7 @@ def nameSearch():
 moves=open("./moves.json", encoding="utf8")
 info=json.load(moves)
 def pokemoves():
-    for move in info:
+   for move in info:
         if lang=='japanese':
             print(move["jname"])
         elif lang=='chinese':
@@ -59,3 +59,20 @@ def pokemoves():
         else:
             print(move["ename"])
 pokemoves()
+def mtypeSearch():
+    typ=input('Would you like to search for a move via type? ').lower()
+    if typ == "yes":
+        type1=input("What move type are you searching for? ").capitalize()
+        t2=input("Is there a secondary typing? yes/no ").lower()
+        if t2=='yes':
+            type2=input("What secondary move type are you searching for? ").capitalize()
+            for move in info:
+                if type1 in move["type"] and type2 in move["type"]:
+                    print(move["ename"])
+        else:
+            for move in info:
+                if type1 in move["type"]:
+                    print(move["ename"])
+    else:
+        return()
+mtypeSearch()
