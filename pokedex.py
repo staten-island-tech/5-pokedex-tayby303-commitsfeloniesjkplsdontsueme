@@ -13,16 +13,17 @@ def pokename():
         for pokemon in data:
             print(pokemon['name'][lang])
     else:
+        lang='english'
         for pokemon in data:
-            print(pokemon['name']['english'])
+            print(pokemon['name'][lang])
 #pokename()
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
 def typeSearch():
     typ=input('Would you like to search for a pokemon via type? ').lower()
-    if typ == "yes":
+    if typ!='no':
         type1=input("What pokemon type are you searching for? ").capitalize()
         t2=input("Is there a secondary typing? yes/no ").lower()
-        if t2=='yes':
+        if t2=='no':
             type2=input("What secondary pokemon type are you searching for? ").capitalize()
             for pokemon in data:
                 if type1 in pokemon["type"] and type2 in pokemon["type"]:
@@ -60,19 +61,14 @@ def pokemoves():
             print(move["ename"])
 pokemoves()
 def mtypeSearch():
-    typ=input('Would you like to search for a move via type? ').lower()
-    if typ == "yes":
-        type1=input("What move type are you searching for? ").capitalize()
-        t2=input("Is there a secondary typing? yes/no ").lower()
-        if t2=='yes':
-            type2=input("What secondary move type are you searching for? ").capitalize()
+    typ=input('Would you like to search for a move via type? yes/no ').lower()
+    if typ != "no":
+        type=input("What move type are you searching for? ").capitalize()
+        if type in move["type"]:
             for move in info:
-                if type1 in move["type"] and type2 in move["type"]:
-                    print(move["ename"])
+                print(move['ename'])
         else:
-            for move in info:
-                if type1 in move["type"]:
-                    print(move["ename"])
+            return()
     else:
         return()
 mtypeSearch()
