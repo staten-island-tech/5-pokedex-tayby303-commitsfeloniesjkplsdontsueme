@@ -9,8 +9,12 @@ for language in (languages):
 lang=input("Please enter the language you wish to select: ").lower()
 # Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
 def pokename():
-    for pokemon in data:
-        print(pokemon['name'][lang])
+    if lang in languages:
+        for pokemon in data:
+            print(pokemon['name'][lang])
+    else:
+        for pokemon in data:
+            print(pokemon['name'][languages[0]])
 pokename()
 # Develop a function that creates a new list of pokemon based on the type the user searched for. If no pokemon was found of that type inform the user
 def typeSearch():
@@ -29,7 +33,7 @@ def typeSearch():
                     print(pokemon["name"][lang])
     else:
         return()
-typeSearch()
+#typeSearch()
 #Develop a function to find all pokemon matching the name the user searched for. Ex. if "Char" return Charmander, Charmeleon and Charizard. Make the user aware if no pokemon was found.
 def nameSearch():
     mon = input("Would you like to search for a pokemon? ").lower()
@@ -42,28 +46,34 @@ def nameSearch():
                 return()
     else:
         return()
-nameSearch()
+#nameSearch()
 #For Leo/, help me come up with a clever final question, considering maybe showing all moves a pokemon has avaiable based on type
 moves=open("./moves.json", encoding="utf8")
 info=json.load(moves)
+name=['jname','cname','ename']
+n=''
 def pokemoves():
    for move in info:
         if lang=='japanese':
-            print(move["jname"])
+            print(move[n])
+            n=name[0]
         elif lang=='chinese':
-            print(move["cname"])
+            print(move[n])
+            n=name[1]
         else:
-            print(move["ename"])
+            n=name[2]
+            print(move[n])
+            
 pokemoves()
 def mtypeSearch():
     mtyp=input('Would you like to search for a move via type? yes/no ').lower()
-    if mtyp != "no":
+    if mtyp!="no":
         mtype=input("What move type are you searching for? ").capitalize()
-        for move in info:
-            if mtype in move["type"]:
-                print(move['ename'])
-            else:
-                return()
+        if mtype==move["type"]:
+            for move in info:
+                print(move[name[n]])
+        else:
+            return()
     else:
         return()
 mtypeSearch()
