@@ -55,25 +55,24 @@ n=''
 def pokemoves():
    for move in info:
         if lang=='japanese':
-            print(move[n])
             n=name[0]
-        elif lang=='chinese':
             print(move[n])
+        elif lang=='chinese':
             n=name[1]
+            print(move[n])
         else:
             n=name[2]
-            print(move[n])
-            
+            print(move[n])        
 pokemoves()
 def mtypeSearch():
     mtyp=input('Would you like to search for a move via type? yes/no ').lower()
     if mtyp!="no":
         mtype=input("What move type are you searching for? ").capitalize()
-        if mtype==move["type"]:
-            for move in info:
-                print(move[name[n]])
-        else:
-            return()
+        for move in info:
+            if mtype==move["type"]:
+                print(move[n])
+            else:
+                return()
     else:
         return()
 mtypeSearch()
