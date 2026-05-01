@@ -59,6 +59,6 @@ def mtypeSearch():
     if mtyp!="no":
         mtype=input("What move type are you searching for? ").capitalize()
         for move in info:
-            if mtype==move["type"]:
+            if mtype in move["type"]:
                 print(move[n])
 mtypeSearch()
